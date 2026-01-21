@@ -1,0 +1,17 @@
+services:
+  server:
+    build: ./server
+    ports:
+      - "5000:5000"
+    env_file: ./server/.env
+    
+  client:
+    build: 
+      context: ./client
+      args:
+        NEXT_PUBLIC_API_URL: http://localhost:5000/api
+        NEXT_PUBLIC_IMAGE_BASE_URL: https://image.tmdb.org/t/p/original
+    ports:
+      - "3000:3000"
+    depends_on:
+      - server
