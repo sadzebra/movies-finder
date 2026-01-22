@@ -1,33 +1,34 @@
+import { isCustomErrorPage } from "next/dist/build/utils";
+
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 export const fetchTrendingMovies = async () => {
-  console.log('Fetch trending movies', API_URL, process.env);
-
   const res = await fetch(`${API_URL}/trending`);
-
-  // console.log('testing: ', res.json());
 
   if (!res.ok)
     throw new Error('Response was not ok');
 
   const data = await res.json();
 
-  // 2. Now you can log it...
-  console.log("Debug Data:", data);
-
   return data;
 }
-// export const fetchTrending = async () => {
-//   const res = await fetch(`${API_URL}/trending`);
-//   if (!res.ok) throw new Error('Network response was not ok');
-//   return res.json();
-// };
 
 export const fetchSearchMovies = async () => {
   console.log('fetch search movies');
 }
 
-export const fetchMovie = async () => {
-  console.log('Fetch movie')
+export const fetchSignleMovie = async (id: string) => {
+  console.log('Fetch movie');
+
+  const res = await fetch(`${API_URL}/movie/${id}`);
+
+  if (!res.ok)
+    throw new Error('Problem getting movvie data');
+
+  const data = await res.json();
+
+  console.log('data to return', data)
+
+  return data;
 }
 

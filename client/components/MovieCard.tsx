@@ -10,8 +10,6 @@ interface MovieProps {
 export default function MovieCard({ movie }: { movie: MovieProps }) {
   const imageUrl = `${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}${movie.poster_path}`;
 
-  console.log('testing again: ', movie)
-
   return (
     <Link href={`/movie/${movie.id}`} className="group">
       <div className="relative overflow-hidden rounded-lg">

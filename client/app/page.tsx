@@ -9,7 +9,6 @@ export default function Home() {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
-    console.log('testing useEffect')
     // get trending movies
     fetchTrendingMovies().then(data => {
       setMovies(data.results)
