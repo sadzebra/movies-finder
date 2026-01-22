@@ -14,8 +14,6 @@ const API_KEY = process.env.TMDB_API_KEY;
 
 //
 app.get('/api/trending/', async (req, res) => {
-  console.log('call to /api/trending/');
-
   try {
     const response = await axios.get(`${BASE_URL}/trending/movie/week?api_key=${API_KEY}`);
     res.json(response.data);
@@ -31,8 +29,18 @@ app.get('/api/search/', (req, res) => {
 });
 
 //
-app.get('/api/movie/:id', (req, res) => {
-  console.log('call to /api/search/');
+app.get('/api/movie/:id', async (req, res) => {
+  console.log('call to /api/move/:id/');
+
+  const { id } = req.params;
+
+  try {
+    const response = await axios.get(`${BASE_URL}/movie/${id}?api_key=${API_KEY}`);
+    res.json(response.data);
+  }
+  catch (error) {
+    console.log(`Problem fetching movie (): ${error.message}`)
+  }
 })
 
 //
