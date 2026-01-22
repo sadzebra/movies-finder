@@ -1,9 +1,13 @@
 services:
   server:
     build: ./server
+    command: npm run dev
     ports:
       - "5000:5000"
     env_file: ./server/.env
+    volumes:
+      - ./server:/app
+      - /app/node_modules
     
   client:
     build: 
@@ -11,6 +15,13 @@ services:
       args:
         NEXT_PUBLIC_API_URL: http://localhost:5000/api
         NEXT_PUBLIC_IMAGE_BASE_URL: https://image.tmdb.org/t/p/original
+    command: npm run dev
+    volumes:
+      - ./client:/app
+      - /app/node_modules
+      - /app/.next
+    environment:
+      - WATCHPACK_POLLING=true
     ports:
       - "3000:3000"
     depends_on:
