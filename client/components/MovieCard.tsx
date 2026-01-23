@@ -15,7 +15,7 @@ export default function MovieCard({ movie }: { movie: MovieProps }) {
       <div className="relative overflow-hidden rounded-lg">
         <img src={imageUrl} alt={movie.title} className="w-full h-auto group-hover:scale-105 transition-transform" />
       </div>
-      <h3 className="mt-2 text-lg font-bold truncate">{movie.title}</h3>
+      <h3 className="mt-2 text-lg text-white font-bold truncate">{movie.title}</h3>
       <p className="text-sm text-gray-500">{movie.release_date?.split('-')[0]}</p>
     </Link>
   );

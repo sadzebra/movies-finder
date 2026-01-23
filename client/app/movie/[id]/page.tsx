@@ -34,7 +34,7 @@ export default function moviePage() {
 
   const imageUrl = movieData.poster_path
     ? `${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}${movieData.poster_path}`
-    : '/placeholder.jpg'; // Fallback if no image
+    : '/placeholder.jpg';
 
   const backdropUrl = movieData.backdrop_path
     ? `${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}${movieData.backdrop_path}`
@@ -62,6 +62,7 @@ export default function moviePage() {
             className="w-full md:w-80 rounded-lg shadow-lg border-4 border-gray-700"
           />
 
+          {/* Details */}
           <div className="mt-6 md:mt-20">
             <h1 className="text-4xl font-bold mb-2">{movieData.title}</h1>
             <div className="flex items-center gap-4 text-gray-400 mb-6">
